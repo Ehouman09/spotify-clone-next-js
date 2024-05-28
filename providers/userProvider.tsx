@@ -6,7 +6,7 @@ interface  UserProviderProps {
     children: React.ReactNode;
 };
 
-export const UserProvider: FC< UserProviderProps> = ({
+export const UserProvider: FC<UserProviderProps> = ({
     children
 }) => {
     return (
