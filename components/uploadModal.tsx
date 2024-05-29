@@ -92,7 +92,7 @@ export default function UploadModal() {
             setIsLoading(false);
             return toast.error("Failed image upload.");
           }
-
+ 
 
           const { 
             error: supabaseError 
