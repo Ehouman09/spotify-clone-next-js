@@ -1,11 +1,14 @@
 "use client";
 
 import { Song } from "@/types";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { MediaItem } from "./MediaItem";
 import { LikeButton } from "./LikeButton";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
+import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
+import { Slider } from "./Slider";
+import usePlayer from "@/hooks/usePlayer";
 
 interface PlayerContentProps {
     song: Song;
@@ -17,8 +20,20 @@ export const PlayerContent: FC<PlayerContentProps> = ({
     songUrl
 }) => {
 
-    const Icon = true ? BsPauseFill : BsPlayFill;
+    const player = usePlayer();
+    const [volume, setVolume] = useState(1)
+    const [isPlaying, setIsPlaying] = useState(false)
 
+    const Icon = isPlaying ? BsPauseFill : BsPlayFill;
+    const VolumeIcon = volume == 0 ? HiSpeakerXMark : HiSpeakerWave;
+
+    const onPlayNext = () => {
+
+        if (player.ids.length === 0) {
+            return;
+        }
+
+    }
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 h-full">
@@ -63,6 +78,16 @@ export const PlayerContent: FC<PlayerContentProps> = ({
                     size={30}
                     className="text-neutral-400 cursor-pointer hover:text-white transition"
                 />
+            </div>
+            <div className="hidden md:flex w-full justify-end pr-2">
+                <div className="flex items-center gap-x-2 w-[120px]">
+                    <VolumeIcon
+                        onClick={ () => {}}
+                        size={34}
+                        className="cursor-pointer"
+                    />
+                    <Slider />
+                </div>
             </div>
         </div>
     );
