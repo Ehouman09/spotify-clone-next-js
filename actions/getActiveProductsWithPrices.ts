@@ -13,7 +13,7 @@ const getActiveProductsWithPrices = async (): Promise<ProductsWithPrice[]> => {
         .from('products')
         .select('*, prices(*)')
         .eq('active', true)
-        .eq('price.active', true)
+        .eq('prices.active', true)
         .order('metadata->index')
         .order('unit_amount', { foreignTable: 'prices' });
 
