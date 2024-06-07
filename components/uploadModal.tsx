@@ -67,7 +67,7 @@ export default function UploadModal() {
           .from('songs')
           .upload(`song-${values.title}-${uniqID}`, songFile, {
             cacheControl: '3600',
-            upset: false
+            //upset: false
           });
 
           if (songError) {
