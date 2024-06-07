@@ -85,7 +85,7 @@ export default function UploadModal() {
           .from('images')
           .upload(`image-${values.title}-${uniqID}`, imageFile, {
             cacheControl: '3600',
-            upset: false
+            //upset: false
           });
 
           if (imageError) {
